@@ -1,0 +1,23 @@
+<title>Tornado WebSockets</title>
+<script>
+    var ws;
+
+    function onLoad() {
+        ws = new WebSocket("wss://123.59.147.152:21333/websocket");
+//        ws.onopen = function() {
+//           ws.send("opening");
+//        }
+        ws.onmessage = function(e) {
+            alert(e.data);
+        };
+    }
+    window.onload = onLoad();
+    function sendMsg() {
+//        alert(document.getElementById('msg').value);
+        ws.send(document.getElementById('msg').value);
+    }
+</script>
+
+
+<strong>Message to Send:</strong> <input type="text" id="msg" value="{&quot;jhd_datatype&quot;: &quot;MMNXH127604782539208DA065113107D&quot;,&quot;keys&quot;: &quot;[]&quot;}" maxlength="500">
+ <input type="button" onclick="sendMsg();" value="Send">
